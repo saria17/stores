@@ -27,11 +27,18 @@ Route::get('/admin', 'AdminController@index');
 Route::get('/categories', function(){
    return view('admin.categories');
 });
+Route::get('/stores', function(){
+	return view('admin.stores');
+});
 
 Route::group(['prefix' => 'admin'], function () {
    Route::get('categories', function(){
       return view('admin.categories');
    });
+   Route::get('stores', function(){
+   	  return view('admin.stores');
+   });
 });
+
 
 
