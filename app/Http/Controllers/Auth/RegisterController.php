@@ -48,27 +48,12 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-        if($data['role_id'] == "1"){
-
-
-
             return Validator::make($data, [
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
         ]);
-        }
-        if($data['role_id']=='2'){
-            return Validator::make($data, [
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:6|confirmed','store_name' => 'required|string|max:255',
-            'role_id' => 'required|integer',
-            'phone_number' => 'nullable|string|max:20',
-            'address' => 'nullable|string',
-            'email' => 'required|string|email|max:255|unique:stores',
-             ]);
-        }
+
     }
 
     /**
@@ -97,14 +82,6 @@ class RegisterController extends Controller
 
              ]);
 
-            $store=Store::create([
-                'name' => $data['store_name'],
-                'address' => $data['address'],
-                'email' => $data['store_email'],
-                'phone_number' => $data['phone_number'],
-                'user_id' => $user->id,
-                ]);
-    
             return $user;
 
         }
