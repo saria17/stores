@@ -18,6 +18,11 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/storeregister', function(){
+	return view('auth/storeregister');
+	});
+
 Route::get('/admin', 'AdminController@index');
 Route::get('/categories', function(){
    return view('admin.categories');
@@ -28,3 +33,5 @@ Route::group(['prefix' => 'admin'], function () {
       return view('admin.categories');
    });
 });
+
+
