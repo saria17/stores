@@ -12,9 +12,19 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+   return view('welcome');
 });
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/admin', 'AdminController@index');
+Route::get('/categories', function(){
+   return view('admin.categories');
+});
+
+Route::group(['prefix' => 'admin'], function () {
+   Route::get('categories', function(){
+      return view('admin.categories');
+   });
+});
