@@ -26,4 +26,26 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function role(){
+       return $this->belongsTo('App\Role');
+    }
+    public function isStore(){
+        if($this->role->name=='store'){
+            return true;
+        }
+        return false;
+    }
+    public function isAdmin(){
+        if($this->role->name=='admin'){
+            return true;
+        }
+        return false;
+    }
+    public function isUser(){
+        if($this->role->name=='user'){
+            return true;
+        }
+        return false;
+    }
 }
